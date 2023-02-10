@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <style>
+    :root {
+      --black: #000;
+      --orange: #f77f00;
+    }
+
+    * {
+      font-family: "Nunito", sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      transition: all 0.2s linear;
+    }
+
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+      /* 🍚scroll-padding-top:
+  scroll했을때 top에 padding을 넣고 멈춤
+   https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-top  */
+      scroll-padding-top: 6rem;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 2rem 9%;
+    }
+
+    .heading {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 4rem;
+      color: var(--black);
+      padding: 1rem;
+    }
+
+    .heading span {
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      border-radius: 0.5rem;
+      border: 0.2rem solid var(--black);
+      font-weight: bolder;
+      font-size: 1.7rem;
+      color: var(--black);
+      cursor: pointer;
+      background-color: #fff;
+      padding: 0.8rem 3rem;
+    }
+
+    .btn:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn:active {
+      position: relative;
+      top: 1px;
+    }
+
+    /* header section*/
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: #fff;
+      padding: 2rem 9%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+      font-size: 2.5rem;
+      color: var(--black);
+    }
+
+    header .navbar a {
+      font-size: 1.7rem;
+      color: var(--black);
+      margin: 0 1rem;
+    }
+
+    header .navbar a:hover {
+      color: var(--orange);
+    }
+
+    header .icons a {
+      font-size: 2.5rem;
+      color: var(--black);
+      margin-left: 1.5rem;
+    }
+
+    header .icons a:hover {
+      color: var(--orange);
+    }
+
+    #menu-bar {
+      font-size: 2.5rem;
+      padding: 0.5rem 1.5rem;
+      border: 0.1rem solid var(--black);
+      color: var(--black);
+      border-radius: 0.3rem;
+      cursor: pointer;
+      display: none; /* 🥒css30 */
+    }
+    /* home section */
+
+    .home {
+      padding: 0;
+      position: relative;
+    }
+
+    .home .slide-container .slide {
+      min-height: 50vh;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; /* 🦄 flex*/
+
+      gap: 1.5rem; /* 🦄flex에서도 사용가능 */
+      padding: 0 9%;
+      padding-top: 9rem;
+    }
+
+    .home .slide-container .slide .content {
+      /* 🦄https://developer.mozilla.org/en-US/docs/Web/CSS/flex      
+     flex-grow : 1;        (여백을 각 div가 1씩 똑같이 나눠가짐)
+    flex-shrink : 1;      (화면크기따라서 같이 작아짐)
+    flex-basis : 40rem;     (기본크기 40rem)
+    */
+      flex: 1 1 40rem;
+      animation: slideContent 0.5s linear 1s backwards;
+    }
+
+    @keyframes slideContent {
+      0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+      }
+    }
+
+    .home .slide-container .slide .image {
+      flex: 1 1 50rem; /* 🦄 flex */
+      padding-bottom: 15rem;
+      position: relative;
+      z-index: 0;
+    }
+
+    .home .slide-container .slide .image .shoe {
+      width: 100%;
+      transform: rotate(-35deg);
+      animation: shoe 0.3s linear;
+    }
+
+    @keyframes shoe {
+      0% {
+        transform: rotate(0deg) scale(0.5);
+      }
+    }
+
+    .home .slide-container .slide .image .text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      animation: shoeText 0.5s linear 0.5s backwards;
+    }
+
+    @keyframes shoeText {
+      0% {
+        opacity: 0;
+        top: -10rem;
+      }
+    }
+
+    .home .slide-container .slide .content span {
+      font-size: 2rem;
+      color: var(--orange);
+    }
+    .home .slide-container .slide .content h3 {
+      font-size: 5rem;
+      color: var(--black);
+    }
+    .home .slide-container .slide .content p {
+      font-size: 1.7rem;
+      color: #666;
+      padding: 0.5rem 0;
+    }
+
+    .home .slide-container:nth-child(1) .slide {
+      background: url(./images/home-bg-1.jpg) no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .home .slide-container:nth-child(2) .slide {
+      background: url(./images/home-bg-2.jpg) no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .home .slide-container:nth-child(3) .slide {
+      background: url(./images/home-bg-3.jpg) no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .home .slide-container {
+      display: none; /* 🥒js22 css  */
+    }
+
+    .home .slide-container.active {
+      display: block; /* 🥒js22 css  */
+    }
+
+    .home #prev,
+    .home #next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      z-index: 100;
+
+      height: 5rem; /* 🥒css20 */
+      width: 5rem;
+      line-height: 4.5rem; /* 🦄css20 수직정렬 */
+      font-size: 2rem;
+
+      color: var(--black);
+      border: 0.2rem solid var(--black);
+      cursor: pointer;
+      text-align: center; /* 🦄수평정렬 */
+    }
+
+    .home #prev {
+      left: 3rem;
+    }
+
+    .home #next {
+      right: 3rem;
+    }
+
+    .home #prev:hover,
+    .home #next:hover {
+      color: #fff;
+      background: var(--orange);
+    }
+  </style>
+  <body>
+    
+    <h1>👉me_2021-1230-Ecommerce_Shoes-Slideshow-JS</h1>
+    <!-- home section -->
+    <section class="home" id="home">
+      <div class="slide-container active">
+        <div class="slide">
+          <div class="content">
+            <span>nike red Shoes</span>
+            <h3>nike metcon shoes</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
+              aspernatur
+            </p>
+            <!-- <a href="#" class="btn">add to cart</a> -->
+          </div>
+          <div class="image">
+            <img src="./images/home-shoe-1.png" class="shoe" alt="" />
+            <img src="./images//home-text-1.png" class="text" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-container">
+        <div class="slide">
+          <div class="content">
+            <span>nike blue Shoes</span>
+            <h3>nike metcon shoes</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
+              aspernatur
+            </p>
+            <!-- <a href="#" class="btn">add to cart</a> -->
+          </div>
+          <div class="image">
+            <img src="./images/home-shoe-2.png" class="shoe" alt="" />
+            <img src="./images//home-text-2.png" class="text" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-container">
+        <div class="slide">
+          <div class="content">
+            <span>nike yellow Shoes</span>
+            <h3>nike metcon shoes</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
+              aspernatur
+            </p>
+            <!-- <a href="#" class="btn">add to cart</a> -->
+          </div>
+          <div class="image">
+            <img src="./images/home-shoe-3.png" class="shoe" alt="" />
+            <img src="./images//home-text-3.png" class="text" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 🥒js22 -->
+      <div id="prev" class="fas fa-arrow-left" onclick="prev()"></div>
+      <div id="next" class="fas fa-arrow-right" onclick="next()"></div>
+    </section>
+    <script>
+      // 🍀js22. slide-show
+
+      /* 
+<🦄% operator>
+
+1) 낮은 숫자를, 더 높은 숫자로 % 했을 때,  낮은 숫자 그대로를 return함
+
+1%3 = 1
+2%3 = 2
+3%3 = 0
+
+1%5 = 1
+2%5 = 2
+3%5 = 3
+4%5 = 4
+
+2) 낮은 숫자를, 더 높은 숫자로 % 했을 때, .... 나눈 후의 나머지 숫자 return
+
+4%3 = 1
+5%3 = 2
+6%3 = 0
+7%3 = 1
+*/
+
+      /* 🦄  slide-show 공식
+index = (index + 1) % slides.length;
+index = (index - 1 + slides.length) % slides.length;
+
+🍄
+20. click, 현재 slide remove , 다음 slide active
+
+30. slides.length = 3 (slide 3개 있어서..)
+ 
+40. 다음페이지로 이동 : 
+index = (index + 1) % slides.length;  
+👉
+1 % 3 = 1
+2 % 3 = 2
+3 % 3 = 0
+
+50. 이전페이지로 이동 : 
+index = (index - 1 + slides.length) % slides.length;
+👉
+0-1+3 = 2  % 3 = 2  (첫페이지 0)
+2-1+3 = 4  % 3 = 1  (마지막페이지 2)
+1-1+3 = 3  % 3 = 0
+*/
+      const slides = document.querySelectorAll(".slide-container");
+      let index = 0;
+
+      console.log(slides);
+      console.log(slides.length); //3
+
+      function next() {
+        slides[index].classList.remove("active");
+        //🍉js22-40
+        index = (index + 1) % slides.length; // 1 2 0
+        console.log(index);
+        slides[index].classList.add("active");
+      }
+
+      function prev() {
+        slides[index].classList.remove("active");
+        //🍉js22-50
+        index = (index - 1 + slides.length) % slides.length; //2 1 0
+        console.log(index);
+        slides[index].classList.add("active");
+      }
+    </script>
+  </body>
+</html>
